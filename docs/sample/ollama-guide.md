@@ -6,10 +6,21 @@ quantization, and serving, exposing an OpenAI-compatible REST API on port 11434 
 ## Key commands
 
 ```bash
-# Pull a model
+# Pull a model (from command line)
 ollama pull llama3.2
 ollama pull nomic-embed-text
+```
 
+Or pull models from Python (useful if the `ollama` CLI isn't in your PATH):
+
+```bash
+# From the repo root, run:
+python setup_models.py
+```
+
+Continuing with other commands:
+
+```bash
 # List downloaded models
 ollama list
 

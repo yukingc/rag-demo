@@ -35,12 +35,6 @@ The LLM never sees raw documents — only the top-k chunks the retriever selects
 
 - [Ollama](https://ollama.com) running locally
 - Python 3.11+
-- The two required models pulled:
-
-```bash
-ollama pull llama3.2
-ollama pull nomic-embed-text
-```
 
 ---
 
@@ -53,24 +47,28 @@ cd rag-demo
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# 2. Add your documents
+# 2. Pull the required models (first time only)
+python setup_models.py
+
+# 3. Add your documents
 # Drop .txt, .md, or .pdf files into ./docs/
 # Sample docs are already there to get you started.
 
-# 3. Ingest (chunk + embed + store)
+# 4. Ingest (chunk + embed + store)
 python ingest.py
 
-# 4. Query
+# 5. Query
 python query.py "your question here"
 
-# 5. Optional: run as an HTTP API
+# 6. Optional: run as an HTTP API
 uvicorn api:app --reload --port 8080
 ```
 
 ---
 
 ## Project structure
-
+setup_models.py    # Run once: pull required Ollama models
+├── 
 ```
 rag-demo/
 ├── ingest.py          # Load docs → chunk → embed → store in Chroma
